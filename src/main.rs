@@ -32,6 +32,7 @@ fn test_as_ref() {
 }
 
 // a function for testing the `unwrap` method
+// also tests `unwrap_or` method 
 fn test_unwrap() {
     fn plus_one(x: Option<i32>) -> Option<i32> {
         match x {
@@ -43,6 +44,9 @@ fn test_unwrap() {
     let five = Some(5);
     let six = plus_one(five);
     assert_eq!(six.unwrap(), 6);
+
+    let none = plus_one(None);
+    assert_eq!(none.unwrap_or(0), 0);
 }
 
 fn main() {
