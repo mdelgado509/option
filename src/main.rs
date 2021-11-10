@@ -31,10 +31,24 @@ fn test_as_ref() {
     assert_eq!(text_length, Some(13));
 }
 
-fn main() {
-    test_is_some();
-    
-    test_is_none();
+// a function for testing the `unwrap` method
+fn test_unwrap() {
+    fn plus_one(x: Option<i32>) -> Option<i32> {
+        match x {
+            None => None,
+            Some(i) => Some(i + 1),
+        }
+    }
 
+    let five = Some(5);
+    let six = plus_one(five);
+    assert_eq!(six.unwrap(), 6);
+}
+
+fn main() {
+    test_is_some();    
+    test_is_none();
     test_as_ref();
+
+    test_unwrap();
 }
